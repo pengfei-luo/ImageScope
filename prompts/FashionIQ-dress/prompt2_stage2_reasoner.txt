@@ -1,0 +1,211 @@
+Task Description:
+The task of Atomic Proposition Generation involves breaking down a instruction into multiple simple, verifiable propositions, each having a unique answer that is either True (Yes) or False (No). Based on the provided instruction and a target image description, you need to break down the instruction into several atomic propositions and coresponding answers, following the three steps below.
+1. Step 1 is to convert each atmoic instruction into statement sentence. If the atomic instruction is comparison, write the instruction into comparison between left and write image.
+2. Step 2 is to convert each statement sentence into interrogative sentence, also provide the ground truth answer based on the instruction.
+The instruction and atomic instructions will be given to you to solve the task. Do not explain any reasons.
+---
+Here is an example:
+
+### Query
+ - Instruction: is V-shaped neck and orange with no sleeves and A longer dress with white belt
+ - Atomic Instructions:
+   (1) Modification: Change the dress a V-shaped neck.
+   (2) Modification: Change the dress orange.
+   (3) Modification: Change the dress no sleeves design.
+   (4) Comparison: Make dress longer.
+   (4) Addition: Add a white belt to the dress.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The dress has a V-shaped neck.
+ (2) The dress is orange.
+ (3) The dress has no sleeves.
+ (4) The dress is longer.
+ (5) The dress has a white belt.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Does the dress have a V-shaped neck? A: Yes. (True)
+ (2) Q: Is the dress orange? A: Yes. (True)
+ (3) Q: Does the dress have sleeves? A: No. (False)
+ (4) Q: Is the dress longer? A: Yes. (True)
+ (5) Q: Does the dress have a white belt? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The dress has a V-shaped neck.",
+    "The dress is orange.",
+    "The dress has no sleeves.",
+    "The dress is longer.",
+    "The dress has a white belt."
+  ],
+  "step2": [
+    ["Does the dress have a V-shaped neck?", "True"],
+    ["Is the dress orange?", "True"],
+    ["Does the dress have sleeves?", "False"],
+    ["Is the dress longer?", "True"],
+    ["Does the dress have a white belt?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is longer and more formal and is longer and black with white trim at neck
+ - Atomic Instructions:
+   (1) Comparison: Make the dress longer.
+   (2) Comparison: Make the dress more formal.
+   (3) Modification: Change the dress color to black.
+   (4) Addition: Add white trim at the neck.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The dress is longer.
+ (2) The dress is more formal.
+ (3) The dress is black.
+ (4) The dress has white trim a
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Is the dress longer? A: Yes. (True)
+ (2) Q: Is the dress more formal? A: Yes. (True)
+ (3) Q: Is the dress black? A: Yes. (True)
+ (4) Q: Does the dress have white trim at the neck? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The dress is longer.",
+    "The dress is more formal.",
+    "The dress is black.",
+    "The dress has white trim at the neck."
+  ],
+  "step2": [
+    ["Is the dress longer?", "True"],
+    ["Is the dress more formal?", "True"],
+    ["Is the dress black?", "True"],
+    ["Does the dress have white trim at the neck?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is darker and has longer sleeves and is black and short
+ - Atomic Instructions:
+  (1) Comparison: Make the dress darker.
+  (2) Comparison: Make the sleeves longer.
+  (3) Modification: Change dress color to black.
+  (4) Comparison: Make the dress shorter.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The dress is darker.
+ (2) The sleeves are longer.
+ (3) The dress is black.
+ (4) The dress is shorter.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Is the dress darker? A: Yes. (True)
+ (2) Q: Are the sleeves longer? A: Yes. (True)
+ (3) Q: Is the dress black? A: Yes. (True)
+ (4) Q: Is the dress shorter? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The dress is darker.",
+    "The sleeves are longer.",
+    "The dress is black.",
+    "The dress is shorter."
+  ],
+  "step2": [
+    ["Is the dress darker?", "True"],
+    ["Are the sleeves longer?", "True"],
+    ["Is the dress black?", "True"],
+    ["Is the dress shorter?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: has a black belt on waist and brown toned and is a tan color
+ - Atomic Instructions:
+   (1) Addition: Add a black belt on the waist.
+   (2) Modification: Change the dress color to brown tones.
+   (3) Modification: Make the dress tan color.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The dress has a black belt on the waist.
+ (2) The dress is brown-toned.
+ (3) The dress is tan in color.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Does the dress have a black belt on the waist? A: Yes. (True)
+ (2) Q: Is the dress brown-toned? A: Yes. (True)
+ (3) Q: Is the dress tan in color? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The dress has a black belt on the waist.",
+    "The dress is brown-toned.",
+    "The dress is tan in color."
+  ],
+  "step2": [
+    ["Does the dress have a black belt on the waist?", "True"],
+    ["Is the dress brown-toned?", "True"],
+    ["Is the dress tan in color?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: Is strapless with a looser bottom and has no sleeves and is more wimsy
+ - Atomic Instructions:
+   (1) Modification: Change the dress to strapless design.
+   (2) Comparison: Make the dress bottom looser.
+   (3) Removal: Remove sleeves.
+   (4) Comparison: Make the dress more whimsical.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The dress is strapless.
+ (2) The dress has a looser bottom.
+ (3) The dress has no sleeves.
+ (4) The dress is more whimsical.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Is the dress strapless? A: Yes. (True)
+ (2) Q: Does the dress have a looser bottom? A: Yes. (True)
+ (3) Q: Does the dress have sleeves? A: No. (False)
+ (4) Q: Is the dress more whimsical? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The dress is strapless.",
+    "The dress has a looser bottom.",
+    "The dress has no sleeves.",
+    "The dress is more whimsical."
+  ],
+  "step2": [
+    ["Is the dress strapless?", "True"],
+    ["Does the dress have a looser bottom?", "True"],
+    ["Does the dress have sleeves?", "False"],
+    ["Is the dress more whimsical?", "True"]
+  ]
+}
+```
+---
+Below is the query you need to solve:
+
+### Query
+ - Instruction: [[INSTRUCTION]]
+ - Atomic Instructions:[[ATOMIC_INST]]

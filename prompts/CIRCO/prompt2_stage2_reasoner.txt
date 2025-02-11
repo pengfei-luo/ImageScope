@@ -1,0 +1,171 @@
+# Task Description
+The task of Atomic Proposition Generation involves breaking down a instruction into multiple simple, verifiable propositions, each having a unique answer that is either True (Yes) or False (No). Based on the provided instruction and a target image description, you need to break down the instruction into several atomic propositions and corresponding answers, following the two steps below.
+
+## Step 1: Statement Sentence Conversion
+Convert each atmoic instruction into statement sentence. There are five types of atmoic instruction: addition, removal, modification, comparison and keep.
+
+## Step 2: Question Form Conversion
+Convert each statement sentence into questions, also provide the ground truth answer based on the given instruction.
+
+The instruction and atomic instructions will be given to you to solve the task.
+---
+Here is an example:
+
+### Query
+ - Instruction: has the person holding a baby
+ - Atomic Instructions:
+   (1) Addition: Make the woman holding a baby.
+
+### Solve
+1. **Step 1.** Based on the atomic instructions, the statements are:
+ (1) There is a woman holding a baby.
+
+2. **Step 2.** Based on step 1, the questions and answers are:
+ (1) Q: Is there a woman holding a baby? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "There is a woman holding a baby."
+  ],
+  "step2": [
+    ["Is there a woman holding a baby?", "True"]
+  ],
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is zoomed in and shows a potted plant on it
+ - Atomic Instructions:
+   (1) Addition: Make a potted plant placed on the white refrigerator.
+   (2) Comparison: With a zoomed in view.
+   
+### Solve
+1. **Step 1.** Based on the atomic instructions, the statements are:
+ (1) A potted plant is placed on a white refrigerator.
+ (2) The image is a zoomed in view.
+     
+2. **Step 2.** Based on step 1, the questions and answers are:
+   (1) Q: Is there a potted plant placed on a white refrigerator? A: Yes. (True)
+   (2) Q: Is the image on the right a zoomed in view? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "A potted plant is placed on a white refrigerator.",
+    "The image is a zoomed in view."
+  ],
+  "step2": [
+    ["Is there a potted plant placed on a white refrigerator?", "True"],
+    ["Is the image on the right a zoomed in view", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: has two of them and there is a fridge instead of an oven
+ - Atomic Instructions:
+   (1) Modification: Have two dogs.
+   (2) Addition: Make a fridge.
+   (3) Removal: Remove the oven.
+
+### Solve
+1. **Step 1.** Based on the atomic instructions, the statements are:
+ (1) There are two dogs.
+ (2) There is a fridge.
+ (3) There is not an oven.
+
+2. **Step 2.** Based on the results of Step 1, the question form of the above statements are:
+ (1) Q: Are there two dogs? A: Yes. (True)
+ (2) Q: Is there a fridge? A: Yes. (True)
+ (3) Q: Is there an oven? A: No. (False)
+  
+```json
+{ 
+  "step1": [
+    "There are two dogs.",
+    "There is a fridge.",
+    "There is not an oven."
+  ],
+  "step2": [
+    ["Are there two dogs?", "True"],
+    ["Is there a fridge?", "True"],
+    ["Is there an over?", "False"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: has high open gates and is set in a zoo
+ - Atomic Instructions:
+   (1) Modification: Make the giraffe in the zoo.
+   (2) Addition:  Make open gates.
+
+### Solve
+1. **Step 1.** Based on the atomic instructions, the statements are:
+ (1) There is a giraffe in the zoo.
+ (2) There are open gates.
+
+2. **Step 2.** Based on the results of Step 1, the question form of the above statements are:
+ (1) Q: Is there a giraffe in the zoo? A: Yes. (True)
+ (2) Q: Are there open gates? A: Yes. (True)
+  
+```json
+{ 
+  "step1": [
+    "There is a giraffe in the zoo.",
+    "There are open gates."
+  ],
+  "step2": [
+    ["Is there a giraffe in the zoo?", "True"],
+    ["Are there open gates?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: has two of them and a beer instead of a coke
+ - Atomic Instructions:
+   (1) Modification: Have two teddy bears instead of one.
+   (2) Modification: Replace the glass of soda with a beer.
+   (3) Removal: Remove the coke.
+
+### Solve
+1. **Step 1.** Based on the atomic instructions, the statements are:
+ (1) There are two teddy bears.
+ (2) There is a glass of beer.
+ (3) There is no coke.
+
+2. **Step 2.** Based on the results of Step 1, the question form of the above statements are:
+ (1) Q: Are there two teddy bears? A: Yes. (True)
+ (2) Q: Is there a glass of beer? A: Yes. (True)
+ (3) Q: Is there a coke? A: No. (False)
+  
+```json
+{ 
+  "step1": [
+    "There are two teddy bears.",
+    "There is a glass of beer.",
+    "There is no coke."
+  ],
+  "step2": [
+    ["Are there two teddy bears?", "True"],
+    ["Is there a glass of beer?", "True"],
+    ["Is there a coke?", "False"]
+  ]
+}
+```
+---
+Below is the query you need to solve:
+
+### Query
+ - Instruction: [[INSTRUCTION]]
+ - Atomic Instructions:[[ATOMIC_INST]]

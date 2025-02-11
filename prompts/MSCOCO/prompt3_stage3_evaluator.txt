@@ -1,0 +1,24 @@
+Your task is to evaluate and determine if the right candidate image reflects the change described in the <INSTRUCTION> "[[INSTRUCTION]]". The instruction may describe:
+1. A change from the left reference image to the right candidate image, or
+2. The dirct desired appearance of the right candidate image itself.
+
+Steps:
+1. For change-based instructions:
+   a. Analyze the left reference image as the starting point.
+   b. Examine the right candidate image for the described change.
+2. For direct description instructions:
+   a. Focus solely on the right candidate image.
+   b. Determine if it matches the instruction's description.
+3. Provide your answer as follows:
+   ANSWER: [Yes/No]
+   Where:
+   - 'Yes' if the candidate image correctly matches the <INSTRUCTION>.
+   - 'No' if it fails to match the <INSTRUCTION>.
+4. After the ANSWER line, briefly explain how the candidate image does or does not match the <INSTRUCTION>.
+
+Important notes:
+- Base your analysis SOLELY on the <INSTRUCTION> and relevant image(s).
+- Ignore elements irrelevant to the <INSTRUCTION>.
+- Do not introduce criteria beyond the <INSTRUCTION>.
+
+Always start with the ANSWER line, followed by your explanation on a new line.

@@ -1,0 +1,196 @@
+Task Description:
+The task of Atomic Proposition Generation involves breaking down a instruction into multiple simple, verifiable propositions, each having a unique answer that is either True (Yes) or False (No). Based on the provided instruction and a target image description, you need to break down the instruction into several atomic propositions and coresponding answers, following the three steps below.
+1. Step 1 is to convert each atmoic instruction into statement sentence. If the atomic instruction is comparison, write the instruction into comparison between left and write image.
+2. Step 2 is to convert each statement sentence into interrogative sentence, also provide the ground truth answer based on the instruction.
+The instruction and atomic instructions will be given to you to solve the task.
+---
+Here is an example:
+
+### Query
+ - Instruction: Is less colorful and has more stripes and has bolder stripes and a buttoned collar
+ - Atomic Instructions:
+   (1) Comparison: Make the shirt less colorful.
+   (2) Comparison: Add more stripes.
+   (3) Comparison: Make the stripes bolder.
+   (4) Addition: Add a buttoned collar.
+
+### Solve
+1. **Step 1.** Based on the atomic instructions, the statements are:
+ (1) The shirt in the right image is less colorful than the one in the left image.
+ (2) The shirt in the right image has more stripes than the one in the right image.
+ (3) The shirt in the right image has bolder stripes than the one in the right image.
+ (4) The dress has a buttoned collar.
+
+2. **Step 2.** Based on step 1, the questions and answers are:
+ (1) Q: Is the shirt in the right image less colorful than the one in the left image? A: Yes. (True)
+ (2) Q: Does the shirt in the right image have more stripes than the one in the right image? A: Yes. (True)
+ (3) Q: Does the shirt in the right image have bolder stripes than the one in the right image? A: Yes. (True)
+ (4) Q: Does the shirt have a buttoned collar? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The shirt in the right image is less colorful than the one in the left image.",
+    "The shirt in the right image has more stripes than the one in the right image.",
+    "The shirt in the right image has bolder stripes than the one in the right image.",
+    "The shirt has a buttoned collar."
+  ],
+  "step2": [
+    ["Is the shirt in the right image less colorful than the one in the left image?", "True"],
+    ["Does the shirt in the right image have more stripes than the one in the right image?", "True"],
+    ["Does the shirt in the right image have bolder stripes than the one in the right image?", "True"],
+    ["Does the shirt have a buttoned collar?", "True"]
+  ],
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is a black fitted tee with body image of the hulk and is a light green hulk
+ - Atomic Instructions:
+   (1) Modification: Change the graphic to a full body image of the Hulk.
+   (2) Modification: Change the Hulk image color to light green.
+
+### Solve
+1. **Step 1.** Based on the atomic instructions, the statements are:
+ (1) The shirt has a full body image of the Hulk.
+ (2) The Hulk image on the shirt is light green.
+
+2. **Step 2.** Based on step 1, the questions and answers are:
+ (1) Q: Does the shirt have a full body image of the Hulk? A: Yes. (True)
+ (2) Q: Is the Hulk image on the shirt light green? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The shirt has a full body image of the Hulk.",
+    "The Hulk image on the shirt is light green."
+  ],
+  "step2": [
+    ["Does the shirt have a full body image of the Hulk?", "True"],
+    ["Is the Hulk image on the shirt light green?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is a black fitted tee with body image of the hulk and is a light green hulk
+ - Atomic Instructions:
+   (1) Comparison: Make the shirt darker.
+   (2) Comparison: Make the graphic more ominous.
+   (3) Modification: Change the shirt color to black.
+   (4) Modification: Change the lettering and logos to white.
+
+### Solve
+1. **Step 1.** Based on the atomic instructions, the statements are:
+ (1) The shirt is darker.
+ (2) The graphic on the shirt is more ominous.
+ (3) The shirt is black.
+ (4) The lettering and logos on the shirt are white.
+
+2. **Step 2.** Based on step 1, the questions and answers are:
+ (1) Q: Is the shirt darker? A: Yes. (True)
+ (2) Q: Is the graphic on the shirt more ominous? A: Yes. (True)
+ (3) Q: Is the shirt black? A: Yes. (True)
+ (4) Q: Are the lettering and logos on the shirt white? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The shirt is darker.",
+    "The graphic on the shirt is more ominous.",
+    "The shirt is black.",
+    "The lettering and logos on the shirt are white."
+  ],
+  "step2": [
+    ["Is the shirt darker?", "True"],
+    ["Is the graphic on the shirt more ominous?", "True"],
+    ["Is the shirt black?", "True"],
+    ["Are the lettering and logos on the shirt white?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: Is long sleeved and has a coffee cup image on front and has longer sleeves
+ - Atomic Instructions:
+   (1) Modification: Change from short-sleeve to long-sleeve.
+   (2) Modification: Replace the car graphic with a coffee cup image.
+   (3) Comparison: Make the sleeves longer.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The shirt is long-sleeved.
+ (2) The shirt has a coffee cup image on the front.
+ (3) The sleeves are longer.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Is the shirt long-sleeved? A: Yes. (True)
+ (2) Q: Does the shirt have a coffee cup image on the front? A: Yes. (True)
+ (3) Q: Are the sleeves longer? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The shirt is long-sleeved.",
+    "The shirt has a coffee cup image on the front.",
+    "The sleeves are longer."
+  ],
+  "step2": [
+    ["Is the shirt long-sleeved?", "True"],
+    ["Does the shirt have a coffee cup image on the front?", "True"],
+    ["Are the sleeves longer?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is more solid and more pocketed and is white with no pattern
+ - Atomic Instructions:
+   (1) Modification: Change the shirt to a solid color.
+   (2) Addition: Add more pockets.
+   (3) Modification: Change the shirt color to white.
+   (4) Removal: Remove the pattern.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The shirt is a solid color.
+ (2) The shirt has more pockets.
+ (3) The shirt is white.
+ (4) The shirt has no pattern.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Is the shirt a solid color? A: Yes. (True)
+ (2) Q: Does the shirt have more pockets? A: Yes. (True)
+ (3) Q: Is the shirt white? A: Yes. (True)
+ (4) Q: Does the shirt have no pattern? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The shirt is a solid color.",
+    "The shirt has more pockets.",
+    "The shirt is white.",
+    "The shirt has no pattern."
+  ],
+  "step2": [
+    ["Is the shirt a solid color?", "True"],
+    ["Does the shirt have more pockets?", "True"],
+    ["Is the shirt white?", "True"],
+    ["Does the shirt have no pattern?", "True"]
+  ]
+}
+```
+---
+Below is the query you need to solve:
+
+### Query
+ - Instruction: [[INSTRUCTION]]
+ - Atomic Instructions:[[ATOMIC_INST]]

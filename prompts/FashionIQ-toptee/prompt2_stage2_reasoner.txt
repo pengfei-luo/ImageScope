@@ -1,0 +1,211 @@
+Task Description:
+The task of Atomic Proposition Generation involves breaking down a instruction into multiple simple, verifiable propositions, each having a unique answer that is either True (Yes) or False (No). Based on the provided instruction and a target image description, you need to break down the instruction into several atomic propositions and coresponding answers, following the three steps below.
+1. Step 1 is to convert each atmoic instruction into statement sentence. If the atomic instruction is comparison, write the instruction into comparison between left and write image.
+2. Step 2 is to convert each statement sentence into interrogative sentence, also provide the ground truth answer based on the instruction.
+The instruction and atomic instructions will be given to you to solve the task.
+---
+Here is an example:
+
+### Query
+ - Instruction: The shirt is loose fitting and red in color and is red with a collar and buttons.
+ - Atomic Instructions:
+   (1) Keep: Maintain the loose-fitting design.
+   (2) Modification: Change the shirt color to red.
+   (3) Addition: Add a collar.
+   (4) Addition: Add buttons.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The shirt is loose-fitting.
+ (2) The shirt is red in color.
+ (3) The shirt has a collar.
+ (4) The shirt has buttons.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Is the shirt loose-fitting? A: Yes. (True)
+ (2) Q: Is the shirt red in color? A: Yes. (True)
+ (3) Q: Does the shirt have a collar? A: Yes. (True)
+ (4) Q: Does the shirt have buttons? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The shirt is loose-fitting.",
+    "The shirt is red in color.",
+    "The shirt has a collar.",
+    "The shirt has buttons."
+  ],
+  "step2": [
+    ["Is the shirt loose-fitting?", "True"],
+    ["Is the shirt red in color?", "True"],
+    ["Does the shirt have a collar?", "True"],
+    ["Does the shirt have buttons?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is black tshirt is half sleeves and more fashionable and has shorter sleeves
+ - Atomic Instructions:
+   (1) Modification: Change the top to a black t-shirt.
+   (2) Modification: Change to half sleeves.
+   (3) Comparison: Make the shirt more fashionable.
+   (4) Comparison: Make the sleeves shorter.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The top is a black t-shirt.
+ (2) The top has half sleeves.
+ (3) The top is more fashionable.
+ (4) The sleeves are shorter.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Is the top a black t-shirt? A: Yes. (True)
+ (2) Q: Does the top have half sleeves? A: Yes. (True)
+ (3) Q: Is the top more fashionable? A: Yes. (True)
+ (4) Q: Are the sleeves shorter? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The top is a black t-shirt.",
+    "The top has half sleeves.",
+    "The top is more fashionable.",
+    "The sleeves are shorter."
+  ],
+  "step2": [
+    ["Is the top a black t-shirt?", "True"],
+    ["Does the top have half sleeves?", "True"],
+    ["Is the top more fashionable?", "True"],
+    ["Are the sleeves shorter?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: has three quarter length sleeves and a scoop neckline and is orange with no v-neck
+ - Atomic Instructions:
+   (1) Modification: Change to three-quarter length sleeves.
+   (2) Modification: Change to a scoop neckline.
+   (3) Modification: Change the color to orange.
+   (4) Removal: Remove the v-neck.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The shirt has three-quarter length sleeves.
+ (2) The shirt has a scoop neckline.
+ (3) The shirt is orange.
+ (4) The shirt does not have a v-neck.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Does the shirt have three-quarter length sleeves? A: Yes. (True)
+ (2) Q: Does the shirt have a scoop neckline? A: Yes. (True)
+ (3) Q: Is the shirt orange? A: Yes. (True)
+ (4) Q: Does the shirt not have a v-neck? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The shirt has three-quarter length sleeves.",
+    "The shirt has a scoop neckline.",
+    "The shirt is orange.",
+    "The shirt does not have a v-neck."
+  ],
+  "step2": [
+    ["Does the shirt have three-quarter length sleeves?", "True"],
+    ["Does the shirt have a scoop neckline?", "True"],
+    ["Is the shirt orange?", "True"],
+    ["Does the shirt not have a v-neck?"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: has shorter sleeves with red dots and is red and white checker patterned and looser fitting
+ - Atomic Instructions:
+   (1) Comparison: Make the sleeves shorter.
+   (2) Addition: Add red dots to the sleeves.
+   (3) Modification: Change the pattern to red and white checker.
+   (4) Comparison: Make the fit looser.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The shirt has shorter sleeves.
+ (2) The shirt has red dots on the sleeves.
+ (3) The shirt has a red and white checker pattern.
+ (4) The shirt is looser fitting.
+
+2. Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Does the shirt have shorter sleeves? A: Yes. (True)
+ (2) Q: Does the shirt have red dots on the sleeves? A: Yes. (True)
+ (3) Q: Is the shirt red and white checker patterned? A: Yes. (True)
+ (4) Q: Is the shirt looser fitting? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The shirt has shorter sleeves.",
+    "The shirt has red dots on the sleeves.",
+    "The shirt has a red and white checker pattern.",
+    "The shirt is looser fitting."
+  ],
+  "step2": [
+    ["Does the shirt have shorter sleeves?", "True"],
+    ["Does the shirt have red dots on the sleeves?", "True"],
+    ["Is the shirt red and white checker patterned?", "True"],
+    ["Is the shirt looser fitting?", "True"]
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: has a red collar and a larger graphic and has brown trim around neckline and a crab on front
+ - Atomic Instructions:
+   (1) Addition: Add a red collar.
+   (2) Comparison: Make the graphic larger.
+   (3) Addition: Add brown trim around the neckline.
+   (4) Modification: Change the graphic to a crab on the front.
+
+### Solve
+1. Step 1. Based on the atomic instructions, the statements are:
+ (1) The shirt has a red collar.
+ (2) The graphic on the shirt is larger.
+ (3) The shirt has brown trim around the neckline.
+ (4) The shirt on the front of the garment is a crab.
+
+Step 2. Based on step 1, the questions and answers are:
+ (1) Q: Does the shirt have a red collar? A: Yes. (True)
+ (2) Q: Is the graphic on the shirt larger? A: Yes. (True)
+ (3) Q: Does the shirt have brown trim around the neckline? A: Yes. (True)
+ (4) Q: Is the graphic on the front of the shirt a crab? A: Yes. (True)
+
+```json
+{
+  "step1": [
+    "The shirt has a red collar.",
+    "The graphic on the shirt is larger.",
+    "The shirt has brown trim around the neckline.",
+    "The shirt on the front of the garment is a crab."
+  ],
+  "step2": [
+    ["Does the shirt have a red collar?", "True"],
+    ["Is the graphic on the shirt larger?", "True"],
+    ["Does the shirt have brown trim around the neckline?", "True"],
+    ["Is the graphic on the front of the shirt a crab?", "True"]
+  ]
+}
+```
+---
+Below is the query you need to solve:
+
+### Query
+ - Instruction: [[INSTRUCTION]]
+ - Atomic Instructions:[[ATOMIC_INST]]

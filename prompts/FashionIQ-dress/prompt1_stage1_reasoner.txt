@@ -1,0 +1,199 @@
+# Task Description
+You are given a description of Image Retrieval. The task is to combine information from both textual instruction and reference image to accurately retrieve images. You need to follow two steps to derive "what does the target image look like".
+
+## Step 1: Instruction Classification and Impact Analysis
+Classify the given instruction into the following types and identify how it affects the reference image. For each type, determine the specific elements or attributes of the reference image that are impacted. The instruction types are:
+ (1) Addition: Introduces new elements or features to the reference image. Identify which existing element the addition relates to or where it should be placed.
+ (2) Removal: Eliminates certain elements from the reference image. Identify which existing element is removed.
+ (3) Modification: Alters attributes of existing elements in the reference image. Determine which specific element is being modified and how.
+ (4) Comparison: Contrasts elements in the reference image using terms like "different," "same," "more," or "less.". Identify elements and attributes being compared.
+ (5) Retention: Specifies certain existing elements in the reference image to remain unchanged. Ensure these elements are noted for inclusion in the target image.
+
+## Step 2: Target Image Description
+Describe what the target image should look like based on the instruction and reference image analysis. Provide three sentences, each focusing on a different semantic aspect:
+ (1) Core Elements: Mention only the elements and adjectives that appear in the instruction.
+ (2) Enhanced Details: Mention the elements in the instruction with necessary adjectives from the reference image.
+ (3) Comprehensive Synthesis: Mention both the elements in the instruction and relevant elements in the reference image with necessary adjectives.
+
+The instruction and reference image description will be given to you to solve the task. Refer to the following examples and the final output should in JSON format. Do not explain any reasons.
+---
+Here is an example:
+
+### Query
+ - Instruction: is V-shaped neck and orange with no sleeves and A longer dress with white belt
+ - Reference Image: The dress is black with a round neckline, three-quarter sleeves, a solid pattern, and a floor-length design.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: Change the dress a V-shaped neck.
+ - Modification: Change the dress orange.
+ - Modification: Change the dress no sleeves design.
+ - Comparison: Make dress longer.
+ - Addition: Add a white belt to the dress.
+
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A long, no sleeves orange dress with a V-shaped neck and no sleeves and a white belt.
+ - A long, no sleeves orange dress showing a solid pattern, with a V-shaped neck and no sleeves and a white belt.
+ - A long, floor-length, no sleeves orange dress showing a solid pattern, with a V-shaped neck and no sleeves and a white belt.
+
+```json
+{
+  "step1": [
+    ["Modification", "Change the dress a V-shaped neck."],
+    ["Modification", "Change the dress orange."],
+    ["Modification", "Change the dress no sleeves design."],
+    ["Comparison", "Make dress longer."],
+    ["Addition", "Add a white belt to the dress."]
+  ],
+  "step2": [
+    "A long, no sleeves orange dress with a V-shaped neck and no sleeves and a white belt.",
+    "A long, no sleeves orange dress showing a solid pattern, with a V-shaped neck and no sleeves and a white belt.",
+    "A long, floor-length, no sleeves orange dress showing a solid pattern, with a V-shaped neck and no sleeves and a white belt."
+  ]
+}
+```
+
+---
+Here is an example:
+
+### Query
+ - Instruction: is longer and more formal and is longer and black with white trim at neck
+ - Reference Image: The dress is a yellow with a sleeveless design, a round neckline, a solid pattern, knee-length pleats, wide straps, and a slim belt.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Comparison: Make the dress longer.
+ - Comparison: Make the dress more formal.
+ - Modification: Change the dress color to black.
+ - Addition: Add white trim at the neck.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A long and formal black dress with white trim at the neck.
+ - A long, formal black dress with white trim at the round neckline and a slim belt.
+ - A long, floor-length, formal black dress with a solid pattern, white trim at the round neckline, sleeveless design and a slim belt.
+
+```json
+{
+  "step1": [
+    ["Comparison", "Make the dress longer."],
+    ["Comparison", "Make the dress more formal."],
+    ["Modification", "Change the dress color to black."],
+    ["Addition", "Add white trim at the neck."]
+  ],
+  "step2": [
+    "A long and formal black dress with white trim at the neck.",
+    "A long, formal black dress with white trim at the round neckline and a slim belt.",
+    "A long, floor-length, formal black dress with a solid pattern, white trim at the round neckline, sleeveless design and a slim belt."
+  ]
+}
+```
+
+---
+Here is an example:
+
+### Query
+ - Instruction: is darker and has longer sleeves and is black and short
+ - Reference Image: The dress is white with a sleeveless design, a round neckline, a loose and flowy A-line silhouette, and a knee length.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Comparison: Make the dress darker.
+ - Comparison: Make the sleeves longer.
+ - Modification: Change dress color to black.
+ - Comparison: Make the dress shorter.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A short dark black dress with longer sleeves.
+ - A short dark black dress with longer sleeves and a round neckline.
+ - A short dark black dress with longer sleeves, a round neckline, and a loose and flowy A-line silhouette.
+
+```json
+{
+  "step1": [
+    ["Comparison", "Make the dress darker."],
+    ["Comparison", "Make the sleeves longer."],
+    ["Modification", "Change dress color to black."],
+    ["Comparison", "Make the dress shorter."]
+  ],
+  "step2": [
+    "A short dark black dress with longer sleeves.",
+    "A short dark black dress with longer sleeves and a round neckline."
+    "A short dark black dress with longer sleeves, a round neckline, and a loose and flowy A-line silhouette."
+  ]
+}
+```
+
+---
+Here is an example:
+
+### Query
+ - Instruction: has a black belt on waist and brown toned and is a tan color
+ - Reference Image: The dress is a orange, strapless dress with a cinched waist and a loose, pleated bodice.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Addition: Add a black belt on the waist.
+ - Modification: Change the dress color to brown tones.
+ - Modification: Make the dress tan color.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A tan and brown strapless dress with a black belt on the waist.
+ - A tan and brown strapless dress with a black belt on the cinched waist and a loose bodice.
+ - A tan and brown strapless dress with a black belt on the cinched waist, featuring a loose, pleated bodice.
+
+```json
+{
+  "step1": [
+    ["Addition", "Add a black belt on the waist."],
+    ["Modification", "Change the dress color to brown tones."],
+    ["Modification", "Make the dress tan color."]
+  ],
+  "step2": [
+    "A tan and brown strapless dress with a black belt on the waist.",
+    "A tan and brown strapless dress with a black belt on the cinched waist and a loose bodice.",
+    "A tan and brown strapless dress with a black belt on the cinched waist, featuring a loose, pleated bodice."
+  ]
+}
+```
+
+---
+Here is an example:
+
+### Query
+ - Instruction: Is strapless with a looser bottom and has no sleeves and is more wimsy
+ - Reference Image: The dress is a sleek, knee-length black piece featuring a short sleeve design with an intricate pattern.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: Change the dress to strapless design.
+ - Comparison: Make the dress bottom looser.
+ - Removal: Remove sleeves.
+ - Comparison: Make the dress more whimsical.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A strapless black dress with a loose bottom.
+ - A strapless, knee-length black dress with a loose bottom and a whimsical design.
+ - A strapless, knee-length black dress with an intricate pattern, a loose bottom and a whimsical design.
+
+```json
+{
+  "step1": [
+    ["Modification", "Change the dress to strapless design."],
+    ["Comparison", "Make the dress bottom looser."],
+    ["Removal", "Remove sleeves."],
+    ["Comparison", "Make the dress more whimsical."]
+  ],
+  "step2": [
+    "A strapless black dress with a loose bottom.",
+    "A strapless, knee-length black dress with a loose bottom and a whimsical design.",
+    "A strapless, knee-length black dress with an intricate pattern, a loose bottom and a whimsical design."
+  ]
+}
+```
+
+---
+Below is the query given to you:
+
+### Query
+ - Instruction: [[INSTRUCTION]]
+ - Reference Image: [[REF_IMAGE_DESC]]

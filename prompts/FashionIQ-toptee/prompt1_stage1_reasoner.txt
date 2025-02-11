@@ -1,0 +1,199 @@
+# Task Description
+You are given a description of Image Retrieval. The task is to combine information from both textual instruction and reference image to accurately retrieve images. You need to follow two steps to derive "what does the target image look like".
+
+## Step 1: Instruction Classification and Impact Analysis
+Classify the given instruction into the following types and identify how it affects the reference image. For each type, determine the specific elements or attributes of the reference image that are impacted. The instruction types are:
+ (1) Addition: Introduces new elements or features to the reference image. Identify which existing element the addition relates to or where it should be placed.
+ (2) Removal: Eliminates certain elements from the reference image. Identify which existing element is removed.
+ (3) Modification: Alters attributes of existing elements in the reference image. Determine which specific element is being modified and how.
+ (4) Comparison: Contrasts elements in the reference image using terms like "different," "same," "more," or "less.". Identify elements and attributes being compared.
+ (5) Retention: Specifies certain existing elements in the reference image to remain unchanged. Ensure these elements are noted for inclusion in the target image.
+
+## Step 2: Target Image Description
+Describe what the target image should look like based on the instruction and reference image analysis. Provide three sentences, each focusing on a different semantic aspect:
+ (1) Core Elements: Mention only the elements and adjectives that appear in the instruction.
+ (2) Enhanced Details: Mention the elements in the instruction with necessary adjectives from the reference image.
+ (3) Comprehensive Synthesis: Mention both the elements in the instruction and relevant elements in the reference image with necessary adjectives.
+
+The instruction and reference image description will be given to you to solve the task.
+---
+Here is an example:
+
+### Query
+ - Instruction: The shirt is loose fitting and red in color and is red with a collar and buttons.
+ - Reference Image: The top is a loose-fitting, long-sleeved, shiny beige satin blouse with a round neckline and fitted cuffs.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Keep: Maintain the loose-fitting design.
+ - Modification: Change the shirt color to red.
+ - Addition: Add a collar.
+ - Addition: Add buttons.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A red shirt with a collar and buttons.
+ - A loose-fitting red shirt with a collar and buttons.
+ - A loose-fitting, long-sleeved red shirt with a collar, buttons, and fitted cuffs.
+
+```json
+{
+  "step1": [
+    ["Keep", "Maintain the loose-fitting design."],
+    ["Modification", "Change the shirt color to red."],
+    ["Addition", "Add a collar."],
+    ["Addition", "Add buttons."]
+  ],
+  "step2": [
+    "A red shirt with a collar and buttons.",
+    "A loose-fitting red shirt with a collar and buttons.",
+    "A loose-fitting, long-sleeved red shirt with a collar, buttons, and fitted cuffs."
+  ]
+}
+```
+
+---
+Here is an example:
+
+### Query
+ - Instruction: is black tshirt is half sleeves and more fashionable and has shorter sleeves
+ - Reference Image: The top is a form-fitting, long-sleeved, dark gray turtleneck with a sleek and simple design.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: Change the top to a black t-shirt.
+ - Modification: Change to half sleeves.
+ - Comparison: Make the shirt more fashionable.
+ - Comparison: Make the sleeves shorter.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A black t-shirt with short sleeves.
+ - A fashionable black t-shirt with short sleeves.
+ - A form-fitting, fashionable black t-shirt with short sleeves, featuring a sleek and simple design.
+
+```json
+{
+  "step1": [
+    ["Modification", "Change the top to a black t-shirt."],
+    ["Modification", "Change to half sleeves."],
+    ["Comparison", "Make the shirt more fashionable."],
+    ["Comparison", "Make the sleeves shorter."]
+  ],
+  "step2": [
+    "A black t-shirt with short sleeves.",
+    "A fashionable black t-shirt with short sleeves.",
+    "A form-fitting, fashionable black t-shirt with short sleeves, featuring a sleek and simple design."
+  ]
+}
+```
+
+---
+Here is an example:
+
+### Query
+ - Instruction: has three quarter length sleeves and a scoop neckline and is orange with no v-neck
+ - Reference Image: The top is a bright red, short-sleeved blouse featuring a v-neckline.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: Change to three-quarter length sleeves.
+ - Modification: Change to a scoop neckline.
+ - Modification: Change the color to orange.
+ - Removal: Remove the v-neck.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - An orange top with three-quarter length sleeves and a scoop neckline.
+ - A bright orange blouse with three-quarter length sleeves and a scoop neckline.
+ - A bright orange blouse featuring three-quarter length sleeves and a scoop neckline, without the v-neck.
+
+```json
+{
+  "step1": [
+    ["Modification", "Change to three-quarter length sleeves."],
+    ["Modification", "Change to a scoop neckline."],
+    ["Modification", "Change the color to orange."],
+    ["Removal", "Remove the v-neck."]
+  ],
+  "step2": [
+    "An orange top with three-quarter length sleeves and a scoop neckline.",
+    "A bright orange blouse with three-quarter length sleeves and a scoop neckline.",
+    "A bright orange blouse featuring three-quarter length sleeves and a scoop neckline, without the v-neck."
+  ]
+}
+```
+
+---
+Here is an example:
+
+### Query
+ - Instruction: has shorter sleeves with red dots and is red and white checker patterned and looser fitting
+ - Reference Image: The top is a fitted, short-sleeved mustard yellow t-shirt featuring a bold, black graphic of a female character on the front.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Comparison: Make the sleeves shorter.
+ - Addition: Add red dots to the sleeves.
+ - Modification: Change the pattern to red and white checker.
+ - Comparison: Make the fit looser.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A red and white checkered t-shirt with short sleeves featuring red dots.
+ - A loose-fitting, red and white checkered t-shirt with very short sleeves adorned with red dots.
+ - A loose-fitting t-shirt with a red and white checker pattern, featuring very short sleeves with red dots.
+
+```json
+{
+  "step1": [
+    ["Comparison", "Make the sleeves shorter."],
+    ["Addition", "Add red dots to the sleeves."],
+    ["Modification", "Change the pattern to red and white checker."],
+    ["Comparison", "Make the fit looser."]
+  ],
+  "step2": [
+    "A red and white checkered t-shirt with short sleeves featuring red dots.",
+    "A loose-fitting, red and white checkered t-shirt with very short sleeves adorned with red dots.",
+    "A loose-fitting t-shirt with a red and white checker pattern, featuring very short sleeves with red dots."
+  ]
+}
+```
+
+---
+Here is an example:
+
+### Query
+ - Instruction: has a red collar and a larger graphic and has brown trim around neckline and a crab on front
+ - Reference Image: The top is a light green, short-sleeved t-shirt featuring a large graphic of a black bear with arms and the words printed above it
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Addition: Add a red collar.
+ - Comparison: Make the graphic larger.
+ - Addition: Add brown trim around the neckline.
+ - Modification: Change the graphic to a crab on the front.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A t-shirt with a red collar, brown trim around the neckline and a large crab graphic.
+ - A short-sleeved t-shirt with a red collar, brown trim around the neckline, and a large crab graphic on the front.
+ - A light green, short-sleeved t-shirt featuring a red collar, brown trim around the neckline, and a prominent crab graphic on the front.
+
+```json
+{
+  "step1": [
+    ["Addition", "Add a red collar."],
+    ["Comparison", "Make the graphic larger."],
+    ["Addition", "Add brown trim around the neckline."],
+    ["Modification", "Change the graphic to a crab on the front."]
+  ],
+  "step2": [
+    "A t-shirt with a red collar, brown trim around the neckline and a large crab graphic.",
+    "A short-sleeved t-shirt with a red collar, brown trim around the neckline, and a large crab graphic on the front.",
+    "A light green, short-sleeved t-shirt featuring a red collar, brown trim around the neckline, and a prominent crab graphic on the front."
+  ]
+}
+```
+
+---
+Below is the query given to you:
+
+### Query
+ - Instruction: [[INSTRUCTION]]
+ - Reference Image: [[REF_IMAGE_DESC]]

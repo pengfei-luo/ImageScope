@@ -1,0 +1,1 @@
+Based on the image, describe color, design and style of the shirt in a single yet detailed sentence. 

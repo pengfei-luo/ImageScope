@@ -1,0 +1,152 @@
+# Task Description
+You are given a description of Image Retrieval. The task is to combine information from both textual instruction and reference image to accurately retrieve images. You need to follow two steps to derive "what does the target image look like".
+
+## Step 1: Instruction Classification and Impact Analysis
+Classify the given instruction into the following types and identify how it affects the reference image. For each type, determine the specific elements or attributes of the reference image that are impacted. The instruction types are:
+ (1) Addition: Introduces new elements or features to the reference image. Identify which existing element the addition relates to or where it should be placed.
+ (2) Removal: Eliminates certain elements from the reference image. Identify which existing element is removed.
+ (3) Modification: Alters attributes of existing elements in the reference image. Determine which specific element is being modified and how.
+ (4) Comparison: Contrasts elements in the reference image using terms like "different," "same," "more," or "less.". Identify elements and attributes being compared.
+ (5) Retention: Specifies certain existing elements in the reference image to remain unchanged. Ensure these elements are noted for inclusion in the target image.
+
+## Step 2: Target Image Description
+Describe what the target image should look like based on the instruction and reference image analysis. Provide three sentences, each focusing on a different semantic aspect:
+ (1) Core Elements: Mention only the elements that appear in the instruction without necessary adjectives.
+ (2) Enhanced Details: Mention the elements in the instruction with necessary adjectives from the reference image.
+ (3) Comprehensive Synthesis: Mention both the elements in the instruction and relevant elements in the reference image with necessary adjectives.
+
+The instruction and reference image description will be given to you to solve the task. Refer to the following examples and the final output should in JSON format.
+---
+Here is an example:
+
+### Query
+ - Instruction: do you see cars? yes
+ - Reference Image: a group of people are standing in the streets near buildings.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Addition: There are cars visible nearby.
+
+2. **Step 2.** Based on step 1, the target image should be like: 
+ - A group of people are standing in the streets near buildings, and there are also cars visible nearby.
+
+```json
+{
+  "step1": [
+    ["Addition", "There are cars visible nearby."]
+  ],
+  "step2": [
+    "A group of people are standing in the streets near buildings, and there are also cars visible nearby."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is photo in color? yes
+ - Reference Image: A group of people are standing in the streets near buildings, and there are also cars visible nearby.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: The photo is in color.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - The image shows a group of people standing in the streets near buildings, with cars visible nearby, and it is in color.
+
+```json
+{
+  "step1": [
+    ["Modification", "The photo is in color."]
+  ],
+  "step2": [
+    "The image shows a group of people standing in the streets near buildings, with cars visible nearby, and it is in color."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: are there other people in the picture? yes, in the background
+ - Reference Image: The image shows a man holding up a crab claw that is part of his dinner, but there is no pot to cook the crab in.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Addition: Add people in the background.
+  
+2. **Step 2.** Based on step 1, the target image should be like: 
+ - The image shows a man holding up a crab claw that is part of his dinner, with other people visible in the background, but there is no pot to cook the crab in.
+
+```json
+{
+  "step1": [
+    ["Addition", "Add people in the background."]
+  ],
+  "step2": [
+    "The image shows a man holding up a crab claw that is part of his dinner, with other people visible in the background, but there is no pot to cook the crab in."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is the coke in a bottle or a can? can. is the teddy bear brown? very light brown. is the computer a desktop or laptop? laptop.
+ - Reference Image: a teddy bear sitting in front of an apple computer with a coke
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: Make the coke a can.
+ - Modification: Make the teddy bear very light brown.
+ - Modification: Make the computer a laptop.
+  
+2. **Step 2.** Based on step 1, the target image should be like: 
+ - The image shows a very light brown teddy bear sitting in front of an apple laptop with a can of Coke.
+
+```json
+{
+  "step1": [
+    ["Modification", "Make the coke a can."],
+    ["Modification", "Make the teddy bear very light brown."],
+    ["Modification", "Make the computer a laptop."]
+  ],
+  "step2": [
+    "The image shows a very light brown teddy bear sitting in front of an apple laptop with a can of Coke."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: what color is the cow? brown and white. does it have horns? no. is it wearing a collar? yes.
+ - Reference Image: a cow poking it's head out of a stable
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: Make the color of the cow brown and white.
+ - Modification: The cow does not have horns.
+ - Addition: Make the cow waring a collar.
+
+2. **Step 2.** Based on step 1, the target image should be like:
+ - The image shows a brown and white cow poking its head out of a stable, wearing a collar and without horns.
+
+```json
+{
+  "step1": [
+    ["Modification", "Make the color of the cow brown and white."],
+    ["Modification", "The cow does not have horns."],
+    ["Addition", "Make the cow waring a collar."]
+  ],
+  "step2": [
+    "The image shows a brown and white cow poking its head out of a stable, wearing a collar and without horns."
+  ]
+}
+```
+---
+Below is the query you need to solve:
+
+### Query
+ - Instruction: [[INSTRUCTION]]
+ - Reference Image: [[REF_IMAGE_DESC]]

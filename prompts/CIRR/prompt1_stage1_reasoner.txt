@@ -1,0 +1,176 @@
+# Task Description
+You are given a description of Image Retrieval. The task is to combine information from both textual instruction and reference image to accurately retrieve images. You need to follow two steps to derive "what does the target image look like".
+
+## Step 1: Instruction Classification and Impact Analysis
+Classify the given instruction into the following types and identify how it affects the reference image. For each type, determine the specific elements or attributes of the reference image that are impacted. The instruction types are:
+ (1) Addition: Introduces new elements or features to the reference image. Identify which existing element the addition relates to or where it should be placed.
+ (2) Removal: Eliminates certain elements from the reference image. Identify which existing element is removed.
+ (3) Modification: Alters attributes of existing elements in the reference image. Determine which specific element is being modified and how.
+ (4) Comparison: Contrasts elements in the reference image using terms like "different," "same," "more," or "less.". Identify elements and attributes being compared.
+ (5) Retention: Specifies certain existing elements in the reference image to remain unchanged. Ensure these elements are noted for inclusion in the target image.
+
+## Step 2: Target Image Description
+Describe what the target image should look like based on the instruction and reference image analysis. Provide three sentences, each focusing on a different semantic aspect:
+ (1) Core Elements: Mention only the elements that appear in the instruction without necessary adjectives.
+ (2) Enhanced Details: Mention the elements in the instruction with necessary adjectives from the reference image.
+ (3) Comprehensive Synthesis: Mention both the elements in the instruction and relevant elements in the reference image with necessary adjectives.
+
+The instruction and reference image description will be given to you to solve the task. Refer to the following examples and the final output should in JSON format.
+---
+Here is an example:
+
+### Query
+ - Instruction: has the person holding a baby
+ - Reference Image: A woman with dark hair is smiling under a gray umbrella with a white flower hanging from it.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Addition: Make the woman holding a baby.
+
+2. **Step 2.** Based on step 1, the target image should be like: 
+ - A woman holds a baby.
+ - A woman with dark hair holds a baby under an umbrella.
+ - A woman with dark hair holds a baby and is smiling, under a gray umbrella.
+
+```json
+{
+  "step1": [
+    ["Addition", "Make the woman holding a baby."]
+  ],
+  "step2": [
+    "A woman holds a baby.",
+    "A woman with dark hair holds a baby under an umbrella.",
+    "A woman with dark hair holds a baby and is smiling, under a gray umbrella."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is zoomed in and shows a potted plant on it
+ - Reference Image: The image depicts a small, cluttered kitchen with white appliances, a refrigerator and a stove.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Addition: Make a potted plant placed on the white refrigerator.
+ - Comparison: With a zoomed in view.
+  
+2. **Step 2.** Based on step 1, the target image should be like:
+ - A zoomed in view of a refrigerator and a potted plant is placed on it.
+ - A white refrigerator with a potted plant on top in a zoomed in view.
+ - A kitchen with a white refrigerator and a potted plant on the top in a zoomed in view.
+
+```json
+{
+  "step1": [
+    ["Addition", "Make a potted plant placed on the white appliances, refrigerator."],
+    ["Comparison", "With a zoomed in view."]
+  ],
+  "step2": [
+    "A zoomed in view of a refrigerator and a potted plant is placed on it.",
+    "A white refrigerator with a potted plant on top in a zoomed in view.",
+    "A kitchen with a white refrigerator and a potted plant on the top in a zoomed in view."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is only one and the photo has a body of water in the background
+ - Reference Image: The image shows a row of bicycles parked along a brick sidewalk, with a red brick building and a black fence in the background.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: Reduce the number of bicycles to only one.
+ - Addition: Add a body of water in the background.
+ - Removal: Remove the other bicycles, leaving only one.
+  
+2. **Step 2.** Based on step 1, the target image should be like: 
+ - A bicycle is parked with a body of water in the background.
+ - A single bicycle is parked on a sidewalk with a body of water in the background.
+ - A single bicycle is parked on a sidewalk, with a building, a fence, and a body of water in the background.
+
+```json
+{
+  "step1": [
+    ["Modification", "Reduce the number of bicycles to only one."],
+    ["Addition", "Add a body of water in the background."],
+    ["Removal", " Remove the other bicycles, leaving only one."]
+  ],
+  "step2": [
+    "A bicycle is parked with a body of water in the background.",
+    "A single bicycle is parked on a sidewalk with a body of water in the background.",
+    "A single bicycle is parked on a sidewalk, with a building, a fence, and a body of water in the background."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: has high open gates and is set in a zoo
+ - Reference Image: A giraffe stands in a grassy field with trees and mountains in the background.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: Make the giraffe in the zoo.
+ - Addition: Make the image have open gates.
+  
+2. **Step 2.** Based on step 1, the target image should be like: 
+ - A giraffe stands in front of high open gates and is set in a zoo.
+ - A giraffe stands in a grassy field in front of high open gates and is set in a zoo.
+ - A giraffe stands in a grassy field in front of high open gates and is set in a zoo, with trees and mountains.
+
+```json
+{
+  "step1": [
+    ["Modification", "Make the giraffe in the zoo."],
+    ["Addition", "Make open gates."]
+  ],
+  "step2": [
+    "A giraffe stands in front of high open gates and is set in a zoo.",
+    "A giraffe stands in a grassy field in front of high open gates and is set in a zoo.",
+    "A giraffe stands in a grassy field in front of high open gates and is set in a zoo, with trees and mountains."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: has two of them and a beer instead of a coke
+ - Reference Image: A brown teddy bear sitting on a wooden table next to a glass of soda and a vase with yellow flowers.
+
+### Solve
+1. **Step 1.** Based on the instruction:
+ - Modification: Have two teddy bears instead of one.
+ - Modification: Replace the glass of soda with a beer.
+ - Removal: Remove the coke.
+
+2. **Step 2.** Based on step 1, the target image should be like:
+ - Two teddy bears sit next to a beer.
+ - Two brown teddy bears sit on a wooden table next to a beer.
+ - Two brown teddy bears sit on a wooden table next to a beer and a vase with flowers.
+
+```json
+{
+  "step1": [
+    ["Modification", "Have two teddy bears instead of one."],
+    ["Modification", "Replace the glass of soda with a beer."],
+    ["Removal", "Remove the coke."]
+  ],
+  "step2": [
+    "Two teddy bears sit next to a beer.",
+    "Two brown teddy bears sit on a wooden table next to a beer.",
+    "Two brown teddy bears sit on a wooden table next to a beer and a vase with flowers."
+  ]
+}
+```
+---
+Below is the query you need to solve:
+
+### Query
+ - Instruction: [[INSTRUCTION]]
+ - Reference Image: [[REF_IMAGE_DESC]]

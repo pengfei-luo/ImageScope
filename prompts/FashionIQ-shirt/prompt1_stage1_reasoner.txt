@@ -1,0 +1,188 @@
+# Task Description
+You are given a description of Image Retrieval. The task is to combine information from both textual instruction and reference image to accurately retrieve images. You need to follow two steps to derive "what does the target image look like".
+
+## Step 1: Instruction Classification and Impact Analysis
+Classify the given instruction into the following types and identify how it affects the reference image. For each type, determine the specific elements or attributes of the reference image that are impacted. The instruction types are:
+ (1) Addition: Introduces new elements or features to the reference image. Identify which existing element the addition relates to or where it should be placed.
+ (2) Removal: Eliminates certain elements from the reference image. Identify which existing element is removed.
+ (3) Modification: Alters attributes of existing elements in the reference image. Determine which specific element is being modified and how.
+ (4) Comparison: Contrasts elements in the reference image using terms like "different," "same," "more," or "less.". Identify elements and attributes being compared.
+ (5) Retention: Specifies certain existing elements in the reference image to remain unchanged. Ensure these elements are noted for inclusion in the target image.
+
+## Step 2: Target Image Description
+Describe what the target image should look like based on the instruction and reference image analysis. Provide three sentences, each focusing on a different semantic aspect:
+ (1) Core Elements: Mention only the elements and adjectives that appear in the instruction.
+ (2) Enhanced Details: Mention the elements in the instruction with necessary adjectives from the reference image.
+ (3) Comprehensive Synthesis: Mention both the elements in the instruction and relevant elements in the reference image with necessary adjectives.
+
+The instruction and reference image description will be given to you to solve the task. Refer to the following examples and your final output should in JSON format. Do not explain any reasons.
+---
+Here is an example:
+
+### Query
+ - Instruction: Is less colorful and has more stripes and has bolder stripes and a buttoned collar
+ - Reference Image: The shirt is a light blue tank top with a sleeveless design, featuring horizontal stripes in white, navy, and green, along with a pocket on the chest.
+
+### Solve
+1. Step 1. Based on the instruction:
+ - Comparison: Make the shirt less colorful.
+ - Comparison: Add more stripes.
+ - Comparison: Make the stripes bolder.
+ - Addition: Add a buttoned collar.
+  
+2. Step 2. Based on step 1, the target image should be like:
+ - A striped shirt with a buttoned collar.
+ - A less colorful shirt with bold horizontal stripes and a buttoned collar.
+ - A light blue tank top with bold horizontal stripes in fewer colors, featuring a buttoned collar and a pocket on the chest.
+
+```json
+{
+  "step1": [
+    ["Comparison", "Make the shirt less colorful."],
+    ["Comparison", "Add more stripes."],
+    ["Comparison", "Make the stripes bolder."],
+    ["Addition", "Add a buttoned collar."]
+  ],
+  "step2": [
+    "A striped shirt with a buttoned collar.",
+    "A less colorful shirt with bold horizontal stripes and a buttoned collar.",
+    "A light blue tank top with bold horizontal stripes in fewer colors, featuring a buttoned collar and a pocket on the chest."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is a black fitted tee with body image of the hulk and is a light green hulk
+ - Reference Image: The shirt is a black short-sleeve T-shirt featuring a green graphic of a fierce face and the word “HULK” on the front.
+
+### Solve
+1. Step 1. Based on the instruction:
+ - Modification: Change the graphic to a full body image of the Hulk.
+ - Modification: Change the Hulk image color to light green.
+
+2. Step 2. Based on step 1, the target image should be like:
+ - A black fitted T-shirt with a light green Hulk body image.
+ - A black fitted short-sleeve T-shirt featuring a light green full-body image of the Hulk.
+ - A black fitted short-sleeve T-shirt with a light green full-body graphic of the Hulk and the word “HULK” on the front.
+
+```json
+{
+  "step1": [
+    ["Modification", "Change the graphic to a full body image of the Hulk."],
+    ["Modification", "Change the Hulk image color to light green."]
+  ],
+  "step2": [
+    "A black fitted T-shirt with a light green Hulk body image.",
+    "A black fitted short-sleeve T-shirt featuring a light green full-body image of the Hulk.",
+    "A black fitted short-sleeve T-shirt with a light green full-body graphic of the Hulk and the word “HULK” on the front."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is darker and has a more ominous graphic and is black with white lettering and logos
+ - Reference Image: The shirt is a brown short-sleeve T-shirt featuring a large yellow graphic of a pharaoh’s headdress with a skull design in the center.
+
+### Solve
+1. Step 1. Based on the instruction:
+ - Comparison: Make the shirt darker.
+ - Comparison: Make the graphic more ominous.
+ - Modification: Change the shirt color to black.
+ - Modification: Change the lettering and logos to white.
+  
+2. Step 2. Based on step 1, the target image should be like:
+ - A black T-shirt with an ominous graphic and white lettering and logos.
+ - A black short-sleeve T-shirt featuring a white ominous graphic with  lettering and logos.
+ - A black short-sleeve T-shirt with a large, a white ominous graphic featuring white lettering and logos in the center.
+
+```json
+{
+  "step1": [
+    ["Comparison", "Make the shirt darker."],
+    ["Comparison", "Make the graphic more ominous."],
+    ["Modification", "Change the shirt color to black."],
+    ["Modification", "Change the lettering and logos to white."]
+  ],
+  "step2": [
+    "A black T-shirt with an ominous graphic and white lettering and logos.",
+    "A black short-sleeve T-shirt featuring a white ominous graphic with  lettering and logos.",
+    "A black short-sleeve T-shirt with a large, a white ominous graphic featuring white lettering and logos in the center."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: Is long sleeved and has a coffee cup image on front and has longer sleeves.
+ - Reference Image: The shirt is a light blue short-sleeve T-shirt with a small graphic of a car on the front.
+
+### Solve
+1. Step 1. Based on the instruction:
+ - Modification: Change from short-sleeve to long-sleeve.
+ - Modification: Replace the car graphic with a coffee cup image.
+ - Comparison: Make the sleeves longer.
+  
+2. Step 2. Based on step 1, the target image should be like:
+ - A long-sleeved shirt with a coffee cup image on the front.
+ - A light blue long-sleeved shirt featuring a small graphic of a coffee cup on the front.
+ - A light blue shirt with long sleeves and a small coffee cup graphic on the front.
+
+```json
+{
+  "step1": [
+    ["Modification", "Change from short-sleeve to long-sleeve."],
+    ["Modification", "Replace the car graphic with a coffee cup image."],
+    ["Comparison", "Make the sleeves longer."]
+  ],
+  "step2": [
+    "A long-sleeved shirt with a coffee cup image on the front.",
+    "A light blue long-sleeved shirt featuring a small graphic of a coffee cup on the front.",
+    "A light blue long-sleeved shirt featuring a small coffee cup graphic on the front."
+  ]
+}
+```
+---
+Here is an example:
+
+### Query
+ - Instruction: is more solid and more pocketed and is white with no pattern
+ - Reference Image: The shirt is a long-sleeved, button-up flannel in a dark blue and black plaid pattern, featuring a classic collar.
+
+### Solve
+1. Step 1. Based on the instruction:
+ - Modification: Change the shirt to a solid color.
+ - Addition: Add more pockets.
+ - Modification: Change the shirt color to white.
+ - Removal: Remove the pattern.
+  
+2. Step 2. Based on step 1, the target image should be like:
+ - A white shirt with multiple pockets.
+ - A solid white, long-sleeved shirt with multiple pockets and a classic collar.
+ - A solid white, long-sleeved, button-up shirt with multiple pockets, featuring a classic collar and no pattern.
+
+```json
+{
+  "step1": [
+    ["Modification", "Change the shirt to a solid color."],
+    ["Addition", "Add more pockets."],
+    ["Modification", "Change the shirt color to white."],
+    ["Removal", "Remove the pattern."]
+  ],
+  "step2": [
+    "A white shirt with multiple pockets.",
+    "A solid white, long-sleeved shirt with multiple pockets and a classic collar.",
+    "A solid white, long-sleeved, button-up shirt with multiple pockets, featuring a classic collar and no pattern."
+  ]
+}
+```
+---
+Below is the query given to you:
+
+### Query
+ - Instruction: [[INSTRUCTION]]
+ - Reference Image: [[REF_IMAGE_DESC]]
