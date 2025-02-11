@@ -20,7 +20,6 @@
 
 ![Task Image](docs/task.png)
 
----
 
 
 # 🚀 Setup
