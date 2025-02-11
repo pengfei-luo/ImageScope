@@ -60,7 +60,7 @@ Put all dataset in a folder `data` as follows:
 
 ### CIRCO
 Please follow the instrution of the CIRCO official repository
-<img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" style="height: 1.5em; vertical-align: middle;" alt="Github Icon">[miccunifi/CIRCO](https://github.com/miccunifi/CIRCO?tab=readme-ov-file#download) to prepare the dataset.
+<img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" width="24" height="24" align="center" alt="Github Icon">[miccunifi/CIRCO](https://github.com/miccunifi/CIRCO?tab=readme-ov-file#download) to prepare the dataset.
 
 
 Move the folder `unlabeled2017` and the folder `CIRCO` structure should look like:
@@ -77,7 +77,7 @@ Move the folder `unlabeled2017` and the folder `CIRCO` structure should look lik
 ```
 
 ### CIRR
-Please follow the instrution of the CIRR official repository <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" style="height: 1.5em; vertical-align: middle;" alt="Github Icon">[Cuberick-Orion/CIRR](https://github.com/Cuberick-Orion/CIRR?tab=readme-ov-file#download-cirr-dataset) to prepare the dataset.
+Please follow the instrution of the CIRR official repository <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" width="24" height="24" align="center" alt="Github Icon">[Cuberick-Orion/CIRR](https://github.com/Cuberick-Orion/CIRR?tab=readme-ov-file#download-cirr-dataset) to prepare the dataset.
 
 Make the folder `CIRR` structure looks as follows:
 ```shell
