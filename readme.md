@@ -164,6 +164,19 @@ Download and extract files form 🤗[HuggingFace - nlphuji/mscoco_2014_5k_test_i
     ├── ...
 ```
 
+### VisDial
+
+Download the files `Protocal/Search_Space_val_50k.json` and `dialogues/VisDial_v1.0_queries_val.json` from <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" width="24" height="24" align="center" alt="Github Icon">[Saehyung-Lee/PlugIR](https://github.com/Saehyung-Lee/PlugIR/). Down load the images [COCO 2017 Unlabeled Images](http://images.cocodataset.org/zips/unlabeled2017.zip). Put these file in the folder `VisDial` and organize the folder as follows:
+```text
+./VisDial
+├── Search_Space_val_50k.json
+├── VisDial_v1.0_queries_val.json
+└── unlabeled2017
+    ├── 000000572834.jpg
+    ├── 000000088597.jpg
+    ├── 000000386336.jpg
+    ├── ...
+```
 
 ## Models
 
