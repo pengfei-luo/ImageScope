@@ -16,9 +16,40 @@
 
 <div align="center">
   <p>Accepted at WWW 2025</p>
+   <a href="https://arxiv.org/abs/2503.10166">
+    <img src="https://img.shields.io/badge/arXiv-2503.10166-b31b1b.svg" alt="arXiv">
+  </a>
+</div>
+
+
+
+
+<div align="center">
+  <p>
+    Pengfei Luo<sup>†</sup>,
+    Jingbo Zhou<sup>‡</sup>,
+    Tong Xu<sup>†</sup>,
+    Yuan Xia<sup>‡</sup>,
+    Linli Xu<sup>†</sup>,
+    Enhong Chen<sup>†</sup>
+  </p>
+  
+  <p>
+    <sup>†</sup> University of Science and Technology of China<br>
+    <sup>‡</sup> Baidu Inc  
+  </p>
 </div>
 
 ![Task Image](docs/task.png)
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/imagescope-unifying-language-guided-image-1/zero-shot-text-to-image-retrieval-on-1)](https://paperswithcode.com/sota/zero-shot-text-to-image-retrieval-on-1?p=imagescope-unifying-language-guided-image-1)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/imagescope-unifying-language-guided-image-1/zero-shot-text-to-image-retrieval-on-ms-coco-1)](https://paperswithcode.com/sota/zero-shot-text-to-image-retrieval-on-ms-coco-1?p=imagescope-unifying-language-guided-image-1)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/imagescope-unifying-language-guided-image-1/chat-based-image-retrieval-on-visdial)](https://paperswithcode.com/sota/chat-based-image-retrieval-on-visdial?p=imagescope-unifying-language-guided-image-1)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/imagescope-unifying-language-guided-image-1/zero-shot-composed-image-retrieval-zs-cir-on-2)](https://paperswithcode.com/sota/zero-shot-composed-image-retrieval-zs-cir-on-2?p=imagescope-unifying-language-guided-image-1)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/imagescope-unifying-language-guided-image-1/zero-shot-composed-image-retrieval-zs-cir-on)](https://paperswithcode.com/sota/zero-shot-composed-image-retrieval-zs-cir-on?p=imagescope-unifying-language-guided-image-1)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/imagescope-unifying-language-guided-image-1/zero-shot-composed-image-retrieval-zs-cir-on-1)](https://paperswithcode.com/sota/zero-shot-composed-image-retrieval-zs-cir-on-1?p=imagescope-unifying-language-guided-image-1)
+
+
 
 
 
