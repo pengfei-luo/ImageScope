@@ -1,12 +1,18 @@
 
 <div align="center">
-  <p><b><span style="font-size:2em;">👀 ImageScope 👀</span></b></p>
+  <h1>
+    👀
+    ImageScope
+    👀
+  </h1>
 </div>
+
 
 <div align="center">
-  <p><b>Unifying Language-Guided Image Retrieval via Large Multimodal Model Collective Reasoning</b></p>
+  <h2>
+    Unifying Language-Guided Image Retrieval via Large Multimodal Model Collective Reasoning
+  </h2>
 </div>
-
 
 <div align="center">
   <p>Accepted at WWW 2025</p>
