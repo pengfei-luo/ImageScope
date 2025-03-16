@@ -247,5 +247,13 @@ After completing the inference, evaluation metrics (for FashionIQ, Flickr30K, MS
 ![Exp Result TIR](docs/exp_result_tir.png)
 
 
-<!-- # Citation
-If you find our paper and code are useful in your research, please cite it as follows.  -->
+# 📚 Citation
+If you find our paper and code are useful in your research, please cite it as follows: 
+```bibtex
+@inproceedings{luo2025imagescope,
+  title={ImageScope: Unifying Language-Guided Image Retrieval via Large Multimodal Model Collective Reasoning},
+  author={Luo, Pengfei and Zhou, Jingbo and Xu, Tong and Xia, Yuan and Xu, Linli and Chen, Enhong},
+  booktitle={The Web Conference 2025},
+  year={2025}
+}
+```
