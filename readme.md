@@ -222,7 +222,7 @@ Download the pre-trained model weights from the links provided below.
 | **Reasoner**  | LLaMA3-8B-Instruct              | 🤗[meta-llama/Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct)   |
 | **Verifier**  | PaliGemma-3B-mix-224             | 🤗[google/paligemma-3b-mix-224](https://huggingface.co/google/paligemma-3b-mix-224)           |
 | **Evaluator** | InternVL2-8B                    | 🤗[OpenGVLab/InternVL2-8B](https://huggingface.co/OpenGVLab/InternVL2-8B)               |
-| **VLM**       | CLIP-ViT-L-14-laion2B-s32B-b82K | 🤗[laion/CLIP-ViT-L-14-laion2B-s32B-b82K](https://huggingface.co/laion/CLIP-ViT-L-14-laion2B-s32B-b82K) |
+| **VLM**       | CLIP-ViT-B-32-laion2B-s34B-b79K<br>CLIP-ViT-L-14-laion2B-s32B-b82K | 🤗[laion/CLIP-ViT-B-32-laion2B-s34B-b79K](https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K)<br>🤗[laion/CLIP-ViT-L-14-laion2B-s32B-b82K](https://huggingface.co/laion/CLIP-ViT-L-14-laion2B-s32B-b82K) |
 
 You can place the downloaded weights in a directory of your choice, and specify the path to the models in the configuration or script when running the pipeline. 
 
